@@ -58,7 +58,7 @@ connect_ssh() {
   if [ "${SSH_VERBOSE}" != "" ]; then
     cmd="ssh ${SSH_VERBOSE}"
   fi
-  user=$(${cmd} -p "${REMOTE_PORT}" "${REMOTE_USER}@${REMOTE_HOST}" whoami)
+  user=$(${cmd} -p "${REMOTE_PORT}" "${REMOTE_USER}@${REMOTE_HOST}" "docker info" > /dev/null)
   if [ "${user}" != "${REMOTE_USER}" ]; then
     exit 1;
   fi
